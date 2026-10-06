@@ -1,0 +1,9 @@
+{
+    "name": "bouclee/lab1",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
