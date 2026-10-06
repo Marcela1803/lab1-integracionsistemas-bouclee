@@ -22,14 +22,16 @@ class PedidoController {
     }
 
     // CREAR
-    public function crearPedido(Pedido $pedido, $cliente, $tipo_postre) {
-        $query = "INSERT INTO pedidos (cliente, tipo_postre, estado) VALUES (:cliente, :tipo_postre, :estado)";
+    public function crearPedido(Pedido $pedido, $cliente, $contacto, $tipo_postre, $fecha_entrega) {
+        $query = "INSERT INTO pedidos (cliente, contacto, tipo_postre, estado, fecha_entrega) VALUES (:cliente, :contacto, :tipo_postre, :estado, :fecha_entrega)";
         $stmt = $this->db->prepare($query);
         
         $estado = 'Pendiente';
         $stmt->bindParam(':cliente', $cliente);
+        $stmt->bindParam(':contacto', $contacto);
         $stmt->bindParam(':tipo_postre', $tipo_postre);
         $stmt->bindParam(':estado', $estado);
+        $stmt->bindParam(':fecha_entrega', $fecha_entrega);
         return $stmt->execute();
     }
 
